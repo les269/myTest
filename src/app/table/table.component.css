@@ -1,0 +1,47 @@
+.table {
+  width: 100%;
+}
+
+.tableImg {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.content {
+  background-color: antiquewhite;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table {
+  margin: 10px;
+  background-color: wheat;
+}
+
+.mat-header-cell {
+  color: #BBBCC2;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 18px;
+
+}
+
+.rowgroup {
+  border-radius: calc(.2857rem - .0625rem) calc(.2857rem - .0625rem) 0 0;
+  border: 2px black;
+}
+
+.post-tile {
+  align-self: flex-start;
+  width: 100%;
+  margin: 5px;
+}
+
+.post-tile .mat-card-image {
+  max-height: 300px;
+}
+
+mat-card:focus {
+  background: lightblue;
+}

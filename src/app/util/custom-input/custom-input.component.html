@@ -1,0 +1,6 @@
+<div class="searchDiv" style="width: 300px;">
+  <input class="search" type="text" [(ngModel)]="key" #searchValue (mouseover)="searchValue.click()">
+  <button mat-icon-button *ngIf="showSearch" class="icon" (click)="search()">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>

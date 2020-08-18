@@ -1,0 +1,116 @@
+app-list.listStyle {
+  flex: 1;
+  display: flex;
+}
+
+.content {
+  background: #caeee2;
+}
+
+
+input[type="text"].search {
+  padding: 5px 15px;
+  cursor: pointer;
+  border: 1px solid #cad1d7;
+  -webkit-border-radius: 5px !important;
+  border-radius: 30px;
+}
+
+.pages {
+  width: 50px;
+  height: 34px;
+  margin-right: 10px;
+  border: 1px solid #cad1d7;
+  -webkit-border-radius: 5px !important;
+  border-radius: 30px;
+}
+
+.sorts {
+  min-width: 50px;
+  height: 34px;
+  border: 1px solid #cad1d7;
+  -webkit-border-radius: 5px !important;
+  border-radius: 30px;
+}
+
+
+.imgContent {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border: 2px #cfe9e2;
+  border-style: solid;
+  margin: 10 10 0 10px !important;
+}
+
+.imgcenter {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.imgDesc {
+  width: 50%;
+  height: 100%;
+}
+
+.imgDesc>div {
+  display: flex;
+  align-items: center;
+  flex-basis: 100%;
+  margin-top: 0;
+}
+
+.imgDesc>div>p {
+  margin: 0px;
+  font-size: 18px;
+}
+
+.fixedImage {
+  opacity: 1;
+  position: fixed;
+  max-width: 60%;
+  z-index: 100;
+  top: 15%;
+  left: 20%;
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+}
+
+.imageButton {
+  height: 30px;
+}
+
+.colon {
+  padding: .25rem !important
+}
+
+.colon::after {
+  content: ":";
+}
+
+.gotop {
+  position: fixed;
+  display: none;
+  opacity: 0;
+  z-index: 110;
+  right: 10px;
+  bottom: 35px;
+  width: 50px;
+  height: 50px;
+  transition: all .2s ease-in-out;
+  background-color: beige;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-scrollTop {
+  cursor: pointer;
+  opacity: 1;
+}

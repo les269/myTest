@@ -1,0 +1,115 @@
+<img id="fixedImage " alt="" #fixedImage class="fixedImage" src="{{fixedImagePath}}" style="visibility: hidden;"
+  (mouseout)="fixedImage.style.visibility = 'hidden'" (mouseover)="fixedImage.style.visibility = 'visible'">
+<div class="gotop rounded-circle" (click)="goToTop()" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</div>
+
+<div class="container-fluid content">
+  <!-- BAR -->
+  <div class="row flex-nowrap justify-content-between align-items-center ">
+    <div class="col-4 d-flex">
+      <button class="imageButton" mat-raised-button (click)="reload()">重讀資料夾</button>
+      <div class="d-flex p-2 bd-highlight">
+        {{hardDisk}} 槽
+      </div>
+    </div>
+    <div class="col-4 d-flex justify-content-center align-items-center">
+      <input type="text" #searchValue class="search" (mouseover)="searchValue.click()">
+      <button mat-button mat-icon-button (click)="search(searchValue.value)">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-button mat-icon-button (click)="search(searchValue.value)">
+        <mat-icon>shuffle</mat-icon>
+      </button>
+    </div>
+    <div class="col-4 d-flex justify-content-end align-items-center">
+      <select class="sorts" [(ngModel)]="sortValue">
+        <option *ngFor="let sort of sorts" [value]="sort">
+          {{sort}}
+        </option>
+      </select>
+      <button mat-icon-button (click)="sortIs=!sortIs">
+        <mat-icon>{{sortIs?'keyboard_arrow_up':'keyboard_arrow_down'}}</mat-icon>
+      </button>
+      <select class="form-control form-control-sm" [(ngModel)]="pageValue" (change)="pageChange(pageValue)"
+        style="width: 100px;">
+        <option *ngFor="let page of pages" [value]="page">
+          {{page}} 頁
+        </option>
+      </select>
+    </div>
+  </div>
+  <!-- ▼搜尋建議 -->
+  <div class="colum flex-wrap justify-content-between align-items-center">
+    <div class="col d-flex justify-content-center align-items-center border border-secondary" style="height: 30px;">
+      <a href="javascript:void(0);" (click)="showDetail=!showDetail">▼搜尋建議</a>
+    </div>
+    <mat-grid-list *ngIf="showDetail" class="col  justify-content-center align-items-center border border-secondary"
+      cols="6" rowHeight="6:1">
+      <mat-grid-tile *ngFor="let item of filterSelectData.art"><a href="javascript:void(0)"
+          (click)="test()">{{item}}</a></mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <!-- 內容 -->
+  <div class="card">
+    <div class="d-flex align-items-center " style="height: 40px;">
+      <div class="pl-5">
+        總數量:{{allData.length}}
+      </div>
+    </div>
+    <div class="justify-content-center align-items-center" *ngFor="let item of list">
+      <mat-card class="p-1">
+        <mat-card-content class="d-flex justify-content-center align-items-center" style="height: 200px;">
+          <div class="col-md-4 p-0 d-flex justify-content-center align-items-center" style="max-height: 200px;">
+            <img class="img-thumbnail" alt="" src="{{item.path}}" style="height: 200px;"
+              (mouseout)="fixedImage.style.visibility = 'hidden'"
+              (mouseover)="fixedImage.style.visibility = 'visible';fixedImagePath = item.path ">
+          </div>
+          <div class="col-md-8 p-0 d-flex flex-wrap flex-row align-items-center imgDesc">
+            <div style="height: 160px;overflow:auto;" class="border">
+              <table>
+                <thead>
+                  <tr>
+                    <td class="colon">標題</td>
+                    <td>{{item.title}}</td>
+                  </tr>
+                  <tr>
+                    <td class="colon">actor</td>
+                    <td>{{item.actor}}</td>
+                  </tr>
+                  <tr>
+                    <td class="colon">num</td>
+                    <td>{{item.num}}</td>
+                  </tr>
+                  <tr>
+                    <td class="colon">date</td>
+                    <td>{{item.date}}</td>
+                  </tr>
+                  <tr>
+                    <td class="colon">size</td>
+                    <td>{{item.size}}</td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="d-flex justify-content-center align-items-center border">
+              <button class="imageButton btn btn-secondary" (click)="openFile(item)">開啟檔案</button>
+              <div style="width:50px"></div>
+              <button class="imageButton btn btn-secondary" (click)="deleteFile(item)">刪除檔案</button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row flex-nowrap justify-content-between align-items-center">
+    <div class="col d-flex justify-content-end align-items-center">
+      <select class="form-control form-control-sm" [(ngModel)]="pageValue" (change)="pageChange(pageValue)"
+        style="width: 100px;">
+        <option *ngFor="let page of pages" [value]="page">
+          {{page}} 頁
+        </option>
+      </select>
+    </div>
+  </div>
+</div>

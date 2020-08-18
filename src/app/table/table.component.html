@@ -1,0 +1,89 @@
+﻿<app-custom-input showSearch="true" (doSearch)="search($event)"></app-custom-input>
+<div class="content">
+  <button mat-button (click)="showDialog()">showDialog</button>
+  <mat-form-field appearance="outline">
+    <mat-label>自我介紹</mat-label>
+    <input name="intro_self" matInput matTooltip="les">
+  </mat-form-field>
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions |async " [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <mat-form-field floatLabel="auto" [hideRequiredMarker]="true" color="primary">
+    <input name="name" matInput [formControl]="name" required>
+    <mat-placeholder>
+      <mat-icon>person</mat-icon>請輸入您的姓名
+    </mat-placeholder>
+    <mat-error>姓名欄位有錯誤</mat-error>
+    <mat-icon matPrefix>attach_money</mat-icon>
+    <span matSuffix>四菊符那</span>
+  </mat-form-field>
+  <form [formGroup]="surveyForm">
+    <div formGroupName="mainQuestions">
+
+      <mat-checkbox formControlName="payForAll" [indeterminate]="indeterminateSelectedPayFor"
+        (change)="checkAllChange($event)">全部</mat-checkbox>
+      <mat-checkbox formControlName="payForBook" (change)="payForChange()">書籍</mat-checkbox>
+      <mat-checkbox formControlName="payForMusic" (change)="payForChange()">音樂</mat-checkbox>
+      <mat-checkbox formControlName="payForMovie" (change)="payForChange()">電影</mat-checkbox>
+      <div>對於Angular，你的評價是？</div>
+      <mat-radio-group formControlName="angularMaterialLikeScore" labelPosition="after">
+        <mat-radio-button [value]="1">超討厭</mat-radio-button>
+        <mat-radio-button [value]="2">討厭</mat-radio-button>
+        <mat-radio-button [value]="3">普通</mat-radio-button>
+        <mat-radio-button [value]="4">喜歡</mat-radio-button>
+        <mat-radio-button [value]="5">超喜歡</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div formGroupName="otherQuestions">
+
+      <div>選擇你最喜歡的顏色</div>
+      <div>
+        <span>Red</span>
+        <mat-slider formControlName="favoriteColorRed" min="0" max="255" step="1" thumbLabel #red
+          (input)="onInputChange($event)"></mat-slider>
+      </div>
+      <div>
+        <span>Green</span>
+        <mat-slider formControlName="favoriteColorGreen" min="0" max="255" step="1" #green></mat-slider>
+      </div>
+      <div>
+        <span>Blue</span>
+        <mat-slider formControlName="favoriteColorBlue" min="0" max="255" step="1" #blue></mat-slider>
+      </div>
+      <div>RGB: ({{ red.value }}, {{ green.value }}, {{ blue.value }})</div>
+      <div style="width: 50px; height: 50px; border: 1px solid #000"
+        [ngStyle]="{background: 'rgb('+red.value+','+green.value+','+blue.value+')'}"></div>
+    </div>
+  </form>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="txt">
+      <th mat-header-cell *matHeaderCellDef> txt </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon>reorder{{element.txt}}</mat-icon>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-mini-fab>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
