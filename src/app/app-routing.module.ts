@@ -1,3 +1,4 @@
+import { MessengerComponent } from './messenger/messenger.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TableComponent } from './table/table.component';
@@ -7,7 +8,8 @@ import { ListComponent } from './list/list.component';
 const routes: Routes = [
   { path: '', component: TableComponent },
   { path: 'showdailog', component: ShowdialogComponent },
-  { path: 'list', component: ListComponent }
+  { path: 'list', component: ListComponent },
+  { path: 'chat', component: MessengerComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,48 @@
+.show {
+  display: flex;
+  position: relative;
+  padding-top: 14px;
+  padding-bottom: 5px;
+  font-size: .9375rem;
+
+}
+
+.myMessage {
+  justify-content: flex-end;
+
+}
+
+.myMessage>div {
+  margin-right: 3px;
+  flex-direction: row-reverse;
+}
+
+
+.show>div {
+  display: flex;
+}
+
+
+.name {
+  margin-left: 3px;
+  color: rgb(0, 0, 0);
+  vertical-align: middle;
+}
+
+.content {
+  background: rgba(204, 170, 170, 0.8);
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 18px;
+  vertical-align: middle;
+}
+
+.messageContent {
+  box-sizing: border-box;
+  width: 50%;
+  height: 400px;
+  margin: 1px;
+  border: 1px rgb(117, 112, 112) solid;
+  border-radius: 5px;
+  overflow: auto;
+}

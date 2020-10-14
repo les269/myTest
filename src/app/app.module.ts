@@ -15,8 +15,7 @@ import { ListComponent } from './list/list.component';
 import { TestDirective } from './test.directive';
 import { CustomInputComponent } from './util/custom-input/custom-input.component';
 import { MessengerComponent } from './messenger/messenger.component';
-
-
+import { StompService } from 'ng2-stomp-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +39,10 @@ import { MessengerComponent } from './messenger/messenger.component';
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
-    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
+    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
+    { provide: 'stompService', useClass: StompService }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

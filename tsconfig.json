@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -11,9 +12,11 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "target": "es2015",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "src/typings.d.ts"
     ],
     "types": ["node"],
     "lib": [
@@ -25,5 +28,11 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "allowSyntheticDefaultImports": true,
-  }
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/*.d.ts",
+    "src/**/*",
+    "node_modules/ng2-stomp-service/dist/stomp.service.ts"
+  ]
 }

@@ -1,1 +1,22 @@
-<p>messenger works!</p>
+<div *ngIf="!joinFlag">
+  <mat-form-field appearance="outline">
+    <input name="intro_self" matInput matTooltip="名稱" [(ngModel)]="userId" (keyup.enter)='join()'>
+  </mat-form-field>
+  <button (click)="join()">加入聊天室</button>
+</div>
+<div #messageContent class="messageContent" *ngIf="joinFlag">
+  <ng-container *ngFor="let m of messageArray">
+    <div *ngIf="m.type==='CHAT'" class="show d-flex " [ngClass]="{'myMessage': userId === m.sender}">
+      <div>
+        <span class="name d-flex justify-content-center align-items-center">{{m.sender}}</span>
+        <span class="content">{{m.content}}</span>
+      </div>
+    </div>
+    <div *ngIf="m.type==='JOIN'" style="text-align: center;">
+      ---{{m.sender}} 已加入---
+    </div>
+  </ng-container>
+</div>
+<mat-form-field appearance="outline" *ngIf="joinFlag" style="position: relative;">
+  <input name="intro_self" matInput matTooltip="訊息" [(ngModel)]="message" (keyup.enter)='sendMessage()'>
+</mat-form-field>

@@ -9,7 +9,10 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.ts"
+    "src/**/*.d.ts",
+    "src/*.d.ts",
+    "src/**/*",
+    "node_modules/ng2-stomp-service/dist/stomp.service.ts"
   ],
   "exclude": [
     "src/test.ts",
